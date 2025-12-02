@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Portfolio Mohamed Jannane</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Devicon for tech icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <!-- Simple CSS Reset -->
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">MJ</a>
+            <button class="navbar-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+            <ul class="navbar-links" id="navLinks">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills-cards">Compétences</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#contact-cards">Contact</a></li>
+                <li><button id="themeSwitch" aria-label="Basculer le thème"><i class="fas fa-moon"></i></button></li>
+            </ul>
+        </div>
+    </nav>
+    <header class="hero">
+        <div class="hero-wrapper">
+            <!-- COLONNE GAUCHE: INFOS -->
+            <div class="hero-left">
+                <div class="hero-title">
+                    <h1>Mohamed Jannane</h1>
+                    <h2>Développeur Web Junior | Étudiant en Développement Digital</h2>
+                </div>
+                
+                <div class="hero-bio">
+                    <p><em>« Créer, coder, évoluer. »</em></p>
+                    <p>Jeune passionné par les technologies du web, je transforme des idées en solutions digitales concrètes et accessibles.</p>
+                </div>
+
+                <!-- INFOS DE CONTACT -->
+                <div class="hero-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>07-22-77-96-33</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>mohamed26jannane@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Casablanca</span>
+                    </div>
+                </div>
+
+                <!-- RÉSEAUX SOCIAUX -->
+                <div class="hero-socials">
+                    
+                    <a href="https://www.linkedin.com/in/mohamed-jannane-46b332355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/med-jannane" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+
+                <!-- BOUTONS CTA -->
+                <div class="btns">
+                    <a href="pdf/MOHAMED-JANNANE-FlowCV-Resume-20251130.pdf" class="btn btn-primary" download><i class="fas fa-file-download"></i> Télécharger mon CV</a>
+                    <a href="#contact-cards" class="btn btn-secondary"><i class="fas fa-envelope"></i> Me contacter</a>
+                </div>
+            </div>
+
+            <!-- COLONNE DROITE: PHOTO -->
+            <div class="hero-right">
+                <div class="profile-photo-frame">
+                    <img class="profile-photo" src="img/tswurti.jpg" alt="Photo de Mohamed Jannane" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- À propos -->
+        <section class="about" id="about">
+            <h2 class="section-title"><i class="fas fa-user"></i> À propos</h2>
+            <p>
+                « Je m'appelle Mohamed Jannane, jeune développeur basé à Casablanca. Sérieux, motivé et ponctuel, je suis toujours prêt à apprendre et à relever de nouveaux défis pour développer mes compétences. Actuellement étudiant en développement digital, je complète mes connaissances grâce à des formations en ligne et à des projets personnels. Je crois qu'apprendre ne s'arrête jamais, et je cherche à transformer mes acquis en véritables solutions utiles et concrètes. »
+            </p>
+        </section>
+
+       
+        <!-- Modal for enlarged education images -->
+        <div id="education-modal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+            <img id="education-modal-img" src="" alt="Formation" style="max-width:90vw;max-height:90vh;border-radius:1rem;box-shadow:0 8px 32px #000;">
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const modal = document.getElementById('education-modal');
+                const modalImg = document.getElementById('education-modal-img');
+                document.querySelectorAll('.education-list img').forEach(img => {
+                    img.style.cursor = 'zoom-in';
+                    img.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        modalImg.src = this.src;
+                        modal.style.display = 'flex';
+                    });
+                });
+                modal.addEventListener('click', function () {
+                    modal.style.display = 'none';
+                    modalImg.src = '';
+                });
+            });
+        </script>
+        <!-- Compétences techniques sous forme de cartes -->
+        <section class="skills-cards" id="skills-cards" style="margin-bottom:2.5rem;">
+            <h2 class="section-title"><i class="fas fa-code"></i> Compétences techniques </h2>
+            <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+                <!-- Ligne 1 -->
+                <div style="display:flex;gap:1.2rem;width:100%;flex-wrap:wrap;">
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-html5-plain colored" title="HTML5" style="font-size:2rem;"></i> <span>HTML5</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-css3-plain colored" title="CSS3" style="font-size:2rem;"></i> <span>CSS3</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-php-plain colored" title="PHP" style="font-size:2rem;"></i> <span>PHP (PDO)</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-javascript-plain colored" title="JavaScript" style="font-size:2rem;"></i> <span>JavaScript</span>
+                    </div>
+                </div>
+                <!-- Ligne 2 -->
+                <div style="display:flex;gap:1.2rem;width:100%;flex-wrap:wrap;">
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-python-plain colored" title="Python" style="font-size:2rem;"></i> <span>Python (bases)</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-react-original colored" title="React" style="font-size:2rem;"></i> <span>React</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-bootstrap-plain colored" title="Bootstrap" style="font-size:2rem;"></i> <span>Bootstrap</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-mysql-plain colored" title="MySQL" style="font-size:2rem;"></i> <span>MySQL</span>
+                    </div>
+                </div>
+                <!-- Ligne 3 -->
+                <div style="display:flex;gap:1.2rem;width:100%;flex-wrap:wrap;">
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-git-plain colored" title="Git" style="font-size:2rem;"></i> <span>Git</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-vscode-plain colored" title="VS Code" style="font-size:2rem;"></i> <span>VS Code</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="devicon-xampp-plain colored" title="XAMPP" style="font-size:2rem;"></i> <span>XAMPP</span>
+                    </div>
+                    <div style="background:var(--card-bg);border-radius:1rem;box-shadow:var(--shadow);padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;">
+                        <i class="fas fa-mobile-alt" title="Responsive" style="font-size:2rem;color:var(--imperial-red);"></i> <span>Responsive design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Compétences techniques sous forme de cartes (déjà fait ci-dessus) -->
+
+<!-- Formations sous forme de cartes -->
+<script>
+    // Modal pour les images des formations (cartes)
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('education-modal');
+        const modalImg = document.getElementById('education-modal-img');
+        document.querySelectorAll('#education-cards img').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function (e) {
+                e.preventDefault();
+                modalImg.src = this.src;
+                modal.style.display = 'flex';
+            });
+        });
+    });
+</script>
+<section class="education-cards" id="education-cards" style="margin-bottom:2.5rem;">
+    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formations </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:220px;flex:1 1 220px;display:flex;align-items:center;gap:1rem;color:var(--text-primary);">
+            <img src="img/image copy 2.png" alt="OFPPT" style="width:38px;height:38px;border-radius:2px;background:var(--white-smoke);padding:0.3rem;border:1px solid #808080;">
+            <div>
+                <strong style="color:var(--text-primary);">Technicien Spécialisé en Développement Digital</strong><br>
+                <span style="color:#000000;font-size:0.9rem;">OFPPT, 2024–2026 <em>(en cours)</em></span>
+            </div>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:220px;flex:1 1 220px;display:flex;align-items:center;gap:1rem;color:var(--text-primary);">
+            <img src="img/WhatsApp Image 2025-11-30 à 23.04.39_da0b4217.jpg" alt="Udemy" style="width:38px;height:38px;border-radius:2px;background:var(--white-smoke);padding:0.3rem;border:1px solid #808080;">
+            <div>
+                <strong style="color:var(--text-primary);">Certificat HTML & CSS (Niveau intermédiaire)</strong><br>
+                <span style="color:#000000;font-size:0.9rem;">Udemy, 2024</span>
+            </div>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:220px;flex:1 1 220px;display:flex;align-items:center;gap:1rem;color:var(--text-primary);">
+    <img src="img/WhatsApp Image 2025-11-30 à 23.04.39_dfbf81e8.jpg" alt="Udemy" style="width:38px;height:38px;border-radius:2px;background:var(--white-smoke);padding:0.3rem;border:1px solid #808080;">
+    <div>
+        <strong style="color:var(--text-primary);">Certificat Méthodologie Agile (Niveau intermédiaire)</strong><br>
+        <span style="color:#000000;font-size:0.9rem;">Udemy, 2025</span>
+    </div>
+</div>
+
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:220px;flex:1 1 220px;display:flex;align-items:center;gap:1rem;color:var(--text-primary);">
+            <img src="img/image copy 3.png" alt="Lycée Riad" style="width:38px;height:38px;border-radius:2px;background:var(--white-smoke);padding:0.3rem;border:1px solid #808080;">
+            <div>
+                <strong style="color:var(--text-primary);">Baccalauréat Sciences Physiques</strong><br>
+                <span style="color:#000000;font-size:0.9rem;">Mention A Bien — Lycée Riad Casablanca, 2024</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Qualités humaines sous forme de cartes -->
+<section class="qualities-cards" id="qualities-cards" style="margin-bottom:2.5rem;">
+    <h2 class="section-title"><i class="fas fa-heart"></i> Qualités humaines </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-bolt" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Motivation & autonomie</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);overflow:hidden;min-height:48px;">
+            <i class="fas fa-comments" style="color:var(--imperial-red);font-size:1.5rem;flex-shrink:0;"></i>
+            <div style="min-width:0;flex:1;">
+                <span style="display:block;color:var(--text-primary);font-weight:bold;word-break:break-word;overflow-wrap:break-word;white-space:normal;">Communication</span>
+            </div>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-users" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Travail en équipe</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-sync-alt" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Adaptation</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-spa" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Patience & calme</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-lightbulb" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Esprit d'initiative</span>
+        </div>
+    </div>
+</section>
+
+<!-- Langues sous forme de cartes -->
+<section class="languages-cards" id="languages-cards" style="margin-bottom:2.5rem;">
+    <h2 class="section-title"><i class="fas fa-language"></i> Langues </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-globe" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Arabe <span style="color:#000000;font-size:0.9rem;font-weight:normal;">(langue maternelle)</span></span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-language" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Français <span style="color:#000000;font-size:0.9rem;font-weight:normal;">B1</span></span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-language" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Anglais <span style="color:#000000;font-size:0.9rem;font-weight:normal;">A2</span></span>
+        </div>
+    </div>
+</section>
+
+<!-- Centres d'intérêt sous forme de cartes -->
+<section class="interests-cards" id="interests-cards" style="margin-bottom:2.5rem;">
+    <h2 class="section-title"><i class="fas fa-star"></i> Centres d'intérêt </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:160px;flex:1 1 160px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-hands-helping" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Bénévolat & social</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:160px;flex:1 1 160px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-gamepad" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Jeux vidéo & tech</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:160px;flex:1 1 160px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-utensils" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Cuisine & découvertes</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:160px;flex:1 1 160px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-laptop" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Apprentissage en ligne</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:160px;flex:1 1 160px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-paint-brush" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Projets créatifs & UI/UX</span>
+        </div>
+    </div>
+</section>
+
+<!-- Statistiques dynamiques sous forme de cartes -->
+<section class="stats-cards" id="stats-cards" style="margin-bottom:2.5rem;">
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> Statistiques </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;flex-direction:column;align-items:center;color:var(--text-primary);">
+            <span style="font-size:2rem;font-weight:900;color:var(--imperial-red);">+10</span>
+            <span style="color:#000000;font-size:0.95rem;font-weight:bold;">projets réalisés</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;flex-direction:column;align-items:center;color:var(--text-primary);">
+            <span style="font-size:2rem;font-weight:900;color:var(--imperial-red);">+150</span>
+            <span style="color:#000000;font-size:0.95rem;font-weight:bold;">heures de code</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:140px;flex:1 1 140px;display:flex;flex-direction:column;align-items:center;color:var(--text-primary);">
+            <span style="font-size:2rem;font-weight:900;color:var(--imperial-red);">+500</span>
+            <span style="color:#000000;font-size:0.95rem;font-weight:bold;">commits</span>
+        </div>
+    </div>
+</section>
+
+<!-- Objectifs sous forme de cartes -->
+<section class="objectives-cards" id="objectives-cards" style="margin-bottom:2.5rem;">
+    <h2 class="section-title"><i class="fas fa-bullseye"></i> Objectifs </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-code-branch" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">2025 : React & JS avancé</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fab fa-github" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Contribuer open-source</span>
+        </div>
+        <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:0.8rem;color:var(--text-primary);">
+            <i class="fas fa-cloud" style="color:var(--imperial-red);font-size:1.5rem;"></i> <span style="color:var(--text-primary);font-weight:bold;">Créer une web app SaaS</span>
+        </div>
+    </div>
+</section>
+    <!-- Expériences sous forme de cartes avec photos -->
+    <div id="experience-modal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+        <img id="experience-modal-img" src="" alt="Expérience" style="max-width:90vw;max-height:90vh;border-radius:1rem;box-shadow:0 8px 32px #000;">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('experience-modal');
+            const modalImg = document.getElementById('experience-modal-img');
+            document.querySelectorAll('#experiences-cards img').forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', function (e) {
+                    modalImg.src = this.src;
+                    modal.style.display = 'flex';
+                });
+            });
+            modal.addEventListener('click', function () {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            });
+        });
+    </script>
+    <section class="experiences-cards" id="experiences-cards" style="margin-bottom:2.5rem;">
+        <h2 class="section-title"><i class="fas fa-briefcase"></i> Expériences </h2>
+        <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+            <!-- Stage d'observation -->
+            <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:240px;flex:1 1 240px;display:flex;align-items:flex-start;gap:1rem;color:var(--text-primary);">
+                <img src="img/image copy 5.png" alt="Soins d'urgence" style="width:56px;height:56px;border-radius:2px;object-fit:cover;background:var(--white-smoke);border:1px solid #808080;">
+                <div>
+                    <strong style="color:var(--text-primary);">Stage d'observation — Soins d'urgence à domicile</strong><br>
+                    <span style="color:#000000;font-size:0.9rem;">Société Suadef, Déc. 2021 – Jan. 2022</span><br>
+                    <span style="color:#000000;font-size:0.9rem;">Observation des interventions d'urgence, suivi des procédures médicales et contact avec les patients.</span>
+                </div>
+            </div>
+            <!-- Guide bénévole -->
+            <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:240px;flex:1 1 240px;display:flex;align-items:flex-start;gap:1rem;color:var(--text-primary);">
+                <img src="img/image copy 4.png" alt="Guide bénévole" style="width:56px;height:56px;border-radius:2px;object-fit:cover;background:var(--white-smoke);border:1px solid #808080;">
+                <div>
+                    <strong style="color:var(--text-primary);">Guide bénévole — Association Casamémoire</strong><br>
+                    <span style="color:#000000;font-size:0.9rem;">2021</span><br>
+                    <span style="color:#000000;font-size:0.9rem;">Accueil et accompagnement des visiteurs, explication du patrimoine, coordination avec l'équipe.</span>
+                </div>
+            </div>
+            <!-- Membre bénévole -->
+            <div style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:240px;flex:1 1 240px;display:flex;align-items:flex-start;gap:1rem;color:var(--text-primary);">
+                <img src="img/image copy 13.png" alt="Membre bénévole" style="width:56px;height:56px;border-radius:2px;object-fit:cover;background:var(--white-smoke);border:1px solid #808080;">
+                <div>
+                    <strong style="color:var(--text-primary);">Membre bénévole — Association Kalb Lkbir & Écoles Riad</strong><br>
+                    <span style="color:#000000;font-size:0.9rem;">2021</span><br>
+                    <span style="color:#000000;font-size:0.9rem;">Actions communautaires, projets éducatifs, soutien logistique et accompagnement scolaire.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+      
+        <!-- =======================
+     SECTION : Projets réalisés 
+=========================== -->
+<section class="projects" id="projects">
+
+  <!-- Titre -->
+  <h2 class="section-title">
+    <i class="fas fa-laptop-code"></i> Projets réalisés
+  </h2>
+
+  <!-- Grille des cartes -->
+  <div class="projects-grid">
+
+    <!-- LOCANEST -->
+    <a href="https://med-jannane.github.io/locanest/" class="project-card" target="_blank">
+      <img src="img/image copy 8.png" alt="LocaNest">
+      <div class="project-title">LocaNest</div>
+      <div class="project-desc">
+        Site de gestion de locations d'appartements. Réservation et présentation des biens.
+      </div>
+      <div class="project-tech">
+        <i class="devicon-html5-plain colored"></i>
+        <i class="devicon-css3-plain colored"></i>
+        <i class="devicon-javascript-plain colored"></i>
+      </div>
+    </a>
+     
+    <!-- VIBESTAGE -->
+    <a href="https://med-jannane.github.io/VIBESATGE/" class="project-card" target="_blank">
+      <img src="img/image copy 7.png" alt="VibeStage">
+      <div class="project-title">VibeStage</div>
+      <div class="project-desc">
+        Plateforme pour réserver des billets d'événements et voir toutes les infos pratiques.
+      </div>
+      <div class="project-tech">
+        <i class="devicon-html5-plain colored"></i>
+        <i class="devicon-css3-plain colored"></i>
+        <i class="devicon-javascript-plain colored"></i>
+      </div>
+    </a>
+
+    <!-- JEU PYGAME -->
+    <a href="https://github.com/med-jannane/pygame" class="project-card" target="_blank">
+      <img src="img/image copy 11.png" alt="Jeu Pygame">
+      <div class="project-title">Jeu Pygame</div>
+      <div class="project-desc">
+        Jeu 2D codé en Python (Pygame). Contrôles clavier, animations, logique simple.
+      </div>
+      <div class="project-tech">
+        <i class="devicon-python-plain colored"></i>
+      </div>
+    </a>
+
+    <!-- AEBDM -->
+    <a href="1.html" class="project-card">
+      <img src="img/image copy 9.png" alt="AEBDM">
+      <div class="project-title">AEBDM</div>
+      <div class="project-desc">
+        Application web de gestion réseau : employés, interventions, clients, contrats.
+      </div>
+      <div class="project-tech">
+        <i class="devicon-php-plain colored"></i>
+        <i class="devicon-html5-plain colored"></i>
+        <i class="devicon-css3-plain colored"></i>
+        <i class="devicon-javascript-plain colored"></i>
+      </div>
+    </a>
+
+    <!-- TIJARTI -->
+    <a href="1.html" class="project-card">
+      <img src="img/image copy 10.png" alt="Tijarti">
+      <div class="project-title">Tijarti</div>
+      <div class="project-desc">
+        Gestion de stock pour magasins locaux : produits, fournisseurs, commandes, utilisateurs.
+      </div>
+      <div class="project-tech">
+        <i class="devicon-php-plain colored"></i>
+        <i class="devicon-html5-plain colored"></i>
+        <i class="devicon-css3-plain colored"></i>
+        <i class="devicon-bootstrap-plain colored"></i>
+      </div>
+    </a>
+    <a href="2.html" class="project-card" >
+      <img src="img/lo3ba.jpg" alt="Mouhim Tjawb">
+       <div class="project-title">Mouhim Tjawb</div>
+      <div class="project-desc">
+       Jeu interactif en Darija : énigmes, proverbes et histoires marocaines. Teste tes connaissances et amuse-toi avec le score !
+      </div>
+  <div class="project-tech">
+    <i class="devicon-html5-plain colored"></i>
+    <i class="devicon-css3-plain colored"></i>
+    <i class="devicon-javascript-plain colored"></i>
+    <i class="devicon-react-original colored"></i>
+  </div>
+</a>
+
+  </div>
+
+</section>
+        <!-- Moyens de contact sous forme de cartes -->
+        <section class="contact-cards" id="contact-cards" style="margin-bottom:2.5rem;">
+            <h2 class="section-title"><i class="fas fa-address-card"></i> Me contacter </h2>
+            <div style="display:flex;flex-wrap:wrap;gap:1.2rem;">
+                <a href="mailto:mohamed26jannane@gmail.com" target="_blank" style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-primary);overflow:hidden;">
+                    <i class="fas fa-envelope" style="color:var(--imperial-red);font-size:1.7rem;flex-shrink:0;"></i>
+                    <div style="overflow:hidden;">
+                        <strong style="color:var(--text-primary);">Email</strong><br>
+                        <span style="color:#000000;font-size:0.85rem;word-break:break-all;display:inline-block;max-width:140px;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom;">mohamed26jannane@gmail.com</span>
+                    </div>
+                </a>
+                
+                <a href="tel:0722779633" style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-primary);">
+                    <i class="fas fa-phone" style="color:var(--imperial-red);font-size:1.7rem;"></i>
+                    <div>
+                        <strong style="color:var(--text-primary);">Téléphone</strong><br>
+                        <span style="color:#000000;font-size:0.9rem;">0722779633</span>
+                    </div>
+                </a>
+                <a href="https://wa.me/212722779633" target="_blank" style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-primary);">
+                    <i class="fab fa-whatsapp" style="color:#25D366;font-size:1.7rem;"></i>
+                    <div>
+                        <strong style="color:var(--text-primary);">WhatsApp</strong><br>
+                        <span style="color:#000000;font-size:0.9rem;">+212 722 779 633</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-jannane-46b332355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-primary);">
+                    <i class="fab fa-linkedin" style="color:#0A66C2;font-size:1.7rem;"></i>
+                    <div>
+                        <strong style="color:var(--text-primary);">LinkedIn</strong><br>
+                        <span style="color:#000000;font-size:0.9rem;">À venir</span>
+                    </div>
+                </a>
+                <a href="https://github.com/med-jannane" target="_blank" style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-primary);">
+                    <i class="fab fa-github" style="color:#fff;font-size:1.7rem;background:#161b22;border-radius:50%;padding:0.3rem;"></i>
+                    <div>
+                        <strong style="color:var(--text-primary);">GitHub</strong><br>
+                        <span style="color:#000000;font-size:0.9rem;">À venir</span>
+                    </div>
+                </a>
+                <a href="#contact" style="background:var(--card-bg);border:2px outset white;border-bottom-color:#808080;border-right-color:#808080;border-radius:2px;box-shadow:3px 3px 0px #808080;padding:1.2rem 1.5rem;min-width:180px;flex:1 1 180px;display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text-primary);">
+                    <i class="fas fa-paper-plane" style="color:var(--imperial-red);font-size:1.7rem;"></i>
+                    <div>
+                        <strong style="color:var(--text-primary);">Formulaire</strong><br>
+                        <span style="color:#000000;font-size:0.9rem;">Envoyer un message direct</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+       
+        <footer class="footer">
+            <div style="margin-bottom:1.2rem;">
+                <strong>Portfolio Mohamed Jannane</strong> — Développeur Web Junior à Casablanca<br>
+                <span style="color:var(--silver);font-size:0.98rem;">Passionné par la création de solutions digitales accessibles et innovantes.</span>
+            </div>
+            <div>
+                « © 2025 Mohamed Jannane — Tous droits réservés. »
+            </div>
+          
+        </footer>
+
+    <!-- JS for theme switch, sliders, and contact form -->
+    <script>
+        const themeSwitch = document.getElementById('themeSwitch');
+        if (themeSwitch) {
+            themeSwitch.onclick = () => {
+                const html = document.documentElement;
+                const isDark = html.getAttribute('data-theme') === 'dark';
+                html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+                themeSwitch.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            };
+        }
+
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.onclick = () => navLinks.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.project-slider').forEach(slider => {
+            const imgs = slider.querySelectorAll('img');
+            let idx = 0;
+            const show = i => { imgs.forEach((img, j) => img.classList.toggle('active', j === i)); };
+            const prev = slider.querySelector('[data-prev]');
+            const next = slider.querySelector('[data-next]');
+            if (prev && next) {
+                prev.onclick = e => { e.stopPropagation(); idx = (idx - 1 + imgs.length) % imgs.length; show(idx); };
+                next.onclick = e => { e.stopPropagation(); idx = (idx + 1) % imgs.length; show(idx); };
+            }
+        });
+
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.onsubmit = function(e) {
+                e.preventDefault();
+                const msg = document.getElementById('formMsg');
+                if (msg) msg.textContent = 'Merci pour votre message ! Je vous répondrai rapidement.';
+                this.reset();
+            };
+        }
+    </script>
+</body>
+</html>

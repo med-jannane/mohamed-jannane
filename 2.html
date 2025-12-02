@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Application Déjà Livrée</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    /* ===== VARIABLES CSS ===== */
+    :root {
+      --primary-color: #0000cd;
+      --secondary-color: #00008b;
+      --accent-color: #ff0000;
+      --bg-light: #c0c0c0;
+      --bg-lighter: #dfdfdf;
+      --border-dark: #808080;
+      --border-light: #ffffff;
+      --text-primary: #000000;
+      --text-secondary: #808080;
+      --white-smoke: #f5f5f5;
+      --sky-blue: #87ceeb;
+      --card-bg: #f0f0f0;
+    }
+
+    [data-theme="dark"] {
+      --bg-light: #2d2d2d;
+      --bg-lighter: #3d3d3d;
+      --border-dark: #ffffff;
+      --border-light: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --white-smoke: #2a2a2a;
+      --card-bg: #333333;
+    }
+
+    /* ===== RESET GLOBAL ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(to bottom, var(--sky-blue), #ffffff);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-light);
+      border-bottom: 2px solid var(--border-dark);
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-logo {
+      font-weight: bold;
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .navbar-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .navbar-links li a,
+    .navbar-links li button {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: bold;
+      background: var(--bg-light);
+      border: 2px outset var(--border-light);
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-size: 0.9rem;
+      border-radius: 2px;
+    }
+
+    .navbar-links li button {
+      background: var(--bg-lighter);
+    }
+
+    .navbar-links li a:active,
+    .navbar-links li button:active {
+      border-style: inset;
+      background: var(--border-light);
+    }
+
+    .navbar-links li a:hover,
+    .navbar-links li button:hover {
+      border: 2px inset var(--border-dark);
+      transform: translateY(1px);
+    }
+
+    /* ===== MAIN CONTAINER ===== */
+    .container {
+      background: var(--card-bg);
+      border: 3px outset white;
+      border-bottom-color: var(--border-dark);
+      border-right-color: var(--border-dark);
+      border-radius: 2px;
+      padding: 2.5rem 2rem;
+      box-shadow: 8px 8px 0px var(--border-dark);
+      max-width: 600px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      letter-spacing: 3px;
+    }
+
+    .icon-wrapper {
+      font-size: 4rem;
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 1rem;
+    }
+
+    .status-box {
+      background: linear-gradient(90deg, #ffcc99, #ffe6cc);
+      border: 2px outset white;
+      border-bottom-color: var(--border-dark);
+      border-right-color: var(--border-dark);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      color: #333;
+    }
+
+    .status-box strong {
+      color: var(--secondary-color);
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding: 0.9rem 1.8rem;
+      background: linear-gradient(180deg, #1084d7, #000d7d);
+      color: white;
+      text-decoration: none;
+      border: 2px outset rgba(255, 255, 255, 0.6);
+      border-bottom-color: #000033;
+      border-right-color: #000033;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      font-size: 0.95rem;
+      border-radius: 2px;
+      user-select: none;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(180deg, #1a90e8, #0015a0);
+      border: 2px outset rgba(255, 255, 255, 0.7);
+    }
+
+    .back-btn:active {
+      border-style: inset;
+      transform: translateY(1px);
+    }
+
+    /* ===== THEME SWITCH ===== */
+    #themeSwitch {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.7rem;
+      }
+
+      .navbar-logo {
+        font-size: 1.2rem;
+      }
+
+      .navbar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .navbar-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: var(--bg-light);
+        border-bottom: 2px solid var(--border-dark);
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+      }
+
+      .navbar-links.active {
+        display: flex;
+        max-height: 500px;
+      }
+
+      .container {
+        padding: 1.5rem 1rem;
+        box-shadow: 5px 5px 0px var(--border-dark);
+        margin-top: 70px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+
+      .icon-wrapper {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem;
+      }
+
+      .container {
+        padding: 1.2rem 0.8rem;
+        box-shadow: 3px 3px 0px var(--border-dark);
+        margin-top: 65px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+      }
+
+      .icon-wrapper {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        padding-left: 0.8rem;
+      }
+
+      .status-box {
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .back-btn {
+        width: 100%;
+        margin-top: 1.5rem;
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 320px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .icon-wrapper {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      .back-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <a href="index.html" class="navbar-logo">MJ</a>
+      <button class="navbar-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html#about">À propos</a></li>
+        <li><a href="index.html#skills-cards">Compétences</a></li>
+        <li><a href="index.html#projects">Projets</a></li>
+        <li><a href="index.html#contact-cards">Contact</a></li>
+        <li><button id="themeSwitch" aria-label="Basculer le thème"><i class="fas fa-moon"></i></button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container">
+    <div class="icon-wrapper">
+      <i class="fas fa-lock"></i>
+    </div>
+    
+    <h1>Application Sécurisée</h1>
+    
+    <div class="status-box">
+      <strong>ℹ️ Information Importante</strong>
+      Cette application est actuellement en cours d'hébergement et sera bientôt accessible au public. Restez à l'écoute pour découvrir mes autres projets.
+    </div>
+
+    <p>
+      Vous pourrez bientôt explorer cette application et jouer au jeu. Merci de votre patience !
+    </p>
+
+    <p>
+      En attendant, n'hésitez pas à consulter les projets disponibles sur mon portfolio.
+    </p>
+
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Retour au portfolio
+    </a>
+  </div>
+
+  <!-- THEME SWITCH JS -->
+  <script>
+    const themeSwitch = document.getElementById('themeSwitch');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (themeSwitch) {
+      themeSwitch.onclick = () => {
+        const html = document.documentElement;
+        const isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        themeSwitch.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      };
+    }
+
+    if (navToggle && navLinks) {
+      navToggle.onclick = () => navLinks.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
