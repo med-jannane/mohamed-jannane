@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-chef-cream text-chef-dark font-sans;
+    background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+  }
+
+  h1, h2, h3 {
+    @apply font-script normal-case tracking-normal;
+  }
+
+  h4, h5, h6 {
+    @apply font-display uppercase tracking-widest font-black;
+  }
+
+  .script-font {
+    @apply font-script;
+  }
+
+  .display-font {
+    @apply font-display uppercase;
+  }
+}
+
+@utility blue-halftone {
+  background-image: radial-gradient(circle at center, #030585 1px, transparent 0);
+  background-size: 4px 4px;
+}
+
+@utility dot-pattern {
+  background-image: radial-gradient(#030585 0.5px, transparent 0.5px);
+  background-size: 10px 10px;
+}
