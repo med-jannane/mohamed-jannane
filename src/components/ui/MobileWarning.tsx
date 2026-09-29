@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Monitor } from 'lucide-react';
 
 export const MobileWarning: React.FC = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
+  const [isVisible, setIsVisible] = useState(() => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 1024;
-    if (isMobile) {
-      setIsVisible(true);
-    }
-  }, []);
+    return isMobile;
+  });
 
   const closeWarning = () => {
     setIsVisible(false);
@@ -19,13 +15,13 @@ export const MobileWarning: React.FC = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4 pointer-events-none">
           {/* Dark Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[#01021A] backdrop-blur-xl"
+            className="absolute inset-0 bg-[#01021A] backdrop-blur-xl pointer-events-none"
           />
 
           {/* High-End Technical Card */}
@@ -33,7 +29,7 @@ export const MobileWarning: React.FC = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="relative w-full max-w-sm bg-white border-4 border-[#030585] shadow-[30px_30px_0px_0px_rgba(3,5,133,0.2)] overflow-hidden"
+            className="relative w-full max-w-sm bg-white border-4 border-[#030585] shadow-[30px_30px_0px_0px_rgba(3,5,133,0.2)] overflow-hidden pointer-events-auto"
           >
             <div className="p-8 text-center relative z-10">
               <div className="flex justify-center mb-8 text-[#030585]">
