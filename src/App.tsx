@@ -12,7 +12,6 @@ import { Contact } from './components/sections/Contact'
 import { Loader } from './components/ui/Loader'
 import { CinematicBackground } from './components/ui/CinematicBackground'
 import { MusicPlayer } from './components/ui/MusicPlayer'
-import { MobileWarning } from './components/ui/MobileWarning'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 
@@ -43,7 +42,6 @@ function App() {
         transition={{ duration: 1 }}
         className="min-h-screen selection:bg-[#030585] selection:text-white relative"
       >
-        <MobileWarning />
         <CinematicBackground />
         <MusicPlayer />
         
