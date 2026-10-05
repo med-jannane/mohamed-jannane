@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
   const marqueeText = "★ PRESERVING THE ART OF CODE ★ SERVING HIGH-PERFORMANCE APPLICATIONS ★ CRAFTING DIGITAL EXPERIENCES ★ 100% FRESH INGREDIENTS ★ EST. 2026 ★ ";
 
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 sm:px-6 md:px-8 relative overflow-hidden">
+    <section className="min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-20 px-4 sm:px-6 md:px-8 relative overflow-x-clip">
       
       {/* Narrative Parallax Signature */}
       <motion.div 

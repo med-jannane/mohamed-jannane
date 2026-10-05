@@ -4,9 +4,7 @@ import { SectionTitle } from '../ui/SectionTitle';
 import { motion } from 'framer-motion';
 
 const LANGUAGES = [
-  { name: 'العربية', level: '100%', key: 'ar' },
   { name: 'Français', level: '70%', key: 'fr' },
-  { name: 'English', level: '40%', key: 'en' },
 ];
 
 const INTERESTS = [
@@ -20,7 +18,7 @@ export const SideDishes: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="extras" className="py-16 px-2 sm:px-4 md:px-6 lg:px-8 max-w-[1800px] mx-auto border-t-[0.5px] border-[#030585]/10 overflow-hidden">
+    <section id="extras" className="py-16 px-2 sm:px-4 md:px-6 lg:px-8 max-w-[1800px] mx-auto border-t-[0.5px] border-[#030585]/10 overflow-x-clip">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         
         {/* Languages - Refined */}
@@ -43,7 +41,7 @@ export const SideDishes: React.FC = () => {
                 <div className="flex items-end justify-between mb-3">
                   <div className="flex flex-col">
                      <span className="font-mono text-[7px] text-[#030585]/30 uppercase font-black tracking-widest mb-1">Lang_Key::{lang.key}</span>
-                     <span className={`text-3xl md:text-4xl ${lang.key === 'ar' ? 'font-sans font-black' : 'font-script'} text-[#030585] group-hover:translate-x-2 transition-transform duration-500`}>
+                     <span className="text-3xl md:text-4xl font-script text-[#030585] group-hover:translate-x-2 transition-transform duration-500">
                        {lang.name}
                      </span>
                   </div>

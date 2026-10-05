@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="relative z-10 bg-[#030585] text-white pt-16 pb-8 overflow-hidden">
+    <footer className="relative z-10 bg-[#030585] text-white pt-16 pb-8 overflow-x-clip">
       <div className="absolute inset-0 dot-pattern opacity-[0.05] pointer-events-none" />
       
       <div className="max-w-[1800px] mx-auto px-6 relative z-10">

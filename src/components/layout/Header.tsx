@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import * as SI from 'simple-icons';
 
 export const Header: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -13,12 +13,6 @@ export const Header: React.FC = () => {
     damping: 30,
     restDelta: 0.001
   });
-
-  const languages = [
-    { code: 'fr', label: 'FR' },
-    { code: 'en', label: 'EN' },
-    { code: 'ar', label: 'AR' },
-  ];
 
   const socialLinks = [
     { 
@@ -98,22 +92,6 @@ export const Header: React.FC = () => {
           </nav>
 
           <div className="pointer-events-auto flex items-center gap-3 md:gap-4">
-             <div className="flex bg-white/80 backdrop-blur-md border border-[#030585]/20 p-1 rounded-sm shadow-lg">
-               {languages.map((lang) => (
-                 <button
-                   key={lang.code}
-                   onClick={() => i18n.changeLanguage(lang.code)}
-                   className={`text-[9px] md:text-[10px] font-black px-3 py-1.5 transition-all rounded-sm ${
-                     i18n.language === lang.code 
-                       ? 'bg-[#030585] text-white shadow-md' 
-                       : 'text-[#030585] hover:bg-[#030585]/5'
-                   }`}
-                 >
-                   {lang.label}
-                 </button>
-               ))}
-             </div>
-
              <button 
                onClick={() => setIsModalOpen(true)}
                className="relative group overflow-hidden bg-[#030585] px-4 md:px-8 py-2 md:py-3 cursor-pointer shadow-2xl border border-[#030585] rounded-sm pointer-events-auto"

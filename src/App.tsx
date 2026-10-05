@@ -47,7 +47,7 @@ function App() {
         
         <Header />
         
-        <main className="relative z-10 pt-12 overflow-x-hidden">
+        <main className="relative z-10 pt-12">
           <Hero />
           <div className="flex flex-col space-y-8 sm:space-y-12 md:space-y-16">
             <SectionWrapper><About /></SectionWrapper>
@@ -86,7 +86,7 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
+    viewport={{ once: true, amount: 0.05 }}
     transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
     className="px-4 sm:px-6 md:px-10 lg:px-12 max-w-[1300px] mx-auto w-full"
   >

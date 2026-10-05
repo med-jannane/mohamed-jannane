@@ -1,20 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import { Music, Globe } from 'lucide-react';
+import { Music } from 'lucide-react';
 
 interface IntroModalProps {
   onComplete: () => void;
 }
 
 export const IntroModal: React.FC<IntroModalProps> = ({ onComplete }) => {
-  const { i18n } = useTranslation();
-  const [step, setStep] = useState(1);
-
-  const selectLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-    setStep(2);
-  };
+  const [step] = useState(2);
 
   return (
     <div className="fixed inset-0 z-[300] flex items-center justify-center bg-[#01021A] p-4">
@@ -27,35 +20,7 @@ export const IntroModal: React.FC<IntroModalProps> = ({ onComplete }) => {
         className="relative w-full max-w-xl bg-white border-2 border-[#030585] p-8 md:p-16 shadow-[40px_40px_0px_0px_rgba(3,5,133,0.1)]"
       >
         <AnimatePresence mode="wait">
-          {step === 1 ? (
-            <motion.div
-              key="step1"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="text-center"
-            >
-              <Globe className="w-12 h-12 text-[#030585] mx-auto mb-8 opacity-20" />
-              <h2 className="font-script text-5xl md:text-6xl text-[#030585] mb-4">Bienvenue</h2>
-              <p className="font-mono text-[10px] text-[#030585]/40 uppercase tracking-[0.3em] mb-12">Select your experience language</p>
-              
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { code: 'fr', label: 'Français' },
-                  { code: 'en', label: 'English' },
-                  { code: 'ar', label: 'العربية' }
-                ].map((lng) => (
-                  <button
-                    key={lng.code}
-                    onClick={() => selectLanguage(lng.code)}
-                    className="group relative p-4 border-2 border-[#030585]/10 hover:border-[#030585] transition-all"
-                  >
-                    <span className="font-mono text-[10px] md:text-xs text-[#030585] font-black uppercase tracking-widest">{lng.label}</span>
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          ) : (
+          {step === 2 && (
             <motion.div
               key="step2"
               initial={{ opacity: 0, x: 20 }}
